@@ -1,17 +1,19 @@
-<?php 
+<?php
+require('controller.php');
 
-$url = '',
-
-if(isset($_GET['url'])) {
-    $url = explode('/', $_GET['url']);
+if (isset($_GET['action'])) {
+    if ($_GET['action'] == 'listFilms') {
+        listFilms();
+    }
+    elseif ($_GET['action'] == 'film') {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            film();
+        }
+        else {
+            echo 'Erreur : aucun identifiant de billet envoyé';
+        }
+    }
 }
-
-var_dump($url);
-
-if($url == '') {
-    echo "Page d'accueil";
-} elseif {
-    
+else {
+    listFilms();
 }
-
-?>
