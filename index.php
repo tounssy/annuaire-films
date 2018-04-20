@@ -7,7 +7,7 @@ if (isset($_GET['action'])) {
     }
     elseif ($_GET['action'] == 'film') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
-            film();
+            film($_GET['id']);
         }
         else {
             echo 'Erreur : aucun identifiant de billet envoyé';
