@@ -1,0 +1,10 @@
+AuthName "Administration du dossier"
+AuthType Basic
+AuthUserFile "/var/www/html/annuaire-films/chemin.php"
+Require valid-user
+
+RequireEngine On
+
+RewriteCond %{REQUEST_FILENAME} §-f
+RewriteCond %{REQUEST_FILENAME} §-d
+RewriteRule ^(.*)$ index.php?url=$1 [NC,L]
