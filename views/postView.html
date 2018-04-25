@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="views/style.css">
+    <title>Document</title>
+</head>
+<body>
+
+        <nav>
+                <div class="nav-wrapper teal lighten-2">
+                  <a href="#" class="brand-logo"><img class="groot" src="public/images/groot.png" width="5%" height="5%"></a>
+                  <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">Nouveautés</a></li>
+                    <li><a href="#">Genre</a></li>
+                    <li><a href="#">Les + vus</a></li>
+                  </ul>
+                </div>
+              </nav>
+
+
+<h2>Je s'appelle Groot !</h2>
+    <div class="container">
+        <div class="row">
+        {% for film in films %}
+            <div class="col s3">
+                <div class="photo" style="background-image: url(public/images/{{film.url_affiche}})">
+                        <a href="?action=film&id={{film.id}}"></a>
+                </div> 
+                <h4 class=""></h4><a href="?action=film&id={{film.id}}">{{ film.titre }}</a>
+            </div>   
+        {% endfor %}
+        </div>
+    </div>
+
+
+<!--     Bootstrap
+    {% for film in films %}
+    <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="public/images/{{film.url_affiche}}" alt="affiche">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Voir le film</a>
+            </div>
+          </div>
+    {% endfor %}
+ -->
+
+    {% if postFilm %}
+        <p><a href="index.php">Accueil</a></p>
+        <p>{{postFilm.titre}}</p>
+        <p>{{postFilm.annee_de_sortie}}</p>
+        <p>{{postFilm.description}}</p>
+        <img class="" src="public/images/{{postFilm.url_affiche}}"/>
+    {% endif %}
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</body>
+</html>

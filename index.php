@@ -1,5 +1,6 @@
 <?php
-require('controller.php');
+
+require('controllers/controller.php');
 
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'listFilms') {
@@ -7,13 +8,14 @@ if (isset($_GET['action'])) {
     }
     elseif ($_GET['action'] == 'film') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
-            film();
+            post();
+
         }
         else {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
     }
 }
-else {
-    listFilms();
+        else {
+            listPosts();
 }

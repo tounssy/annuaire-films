@@ -8,8 +8,13 @@ catch(Exception $e) {
 }
 
 function listFilms() {
-    $response = $GLOBALS['bdd']->prepare('SELECT titre, url_affiche FROM films WHERE annee_de_sortie <= CURDATE() ORDER BY annee_de_sortie DESC LIMIT 4');
+    $response = $GLOBALS['bdd']->prepare('SELECT id, titre, url_affiche, annee_de_sortie FROM films WHERE annee_de_sortie <= CURDATE() ORDER BY annee_de_sortie DESC LIMIT 4');
     $response->execute();
     return $response->fetchAll(PDO::FETCH_ASSOC);
 }
-print_r(listFilms());
+
+function film() {
+    $response = $GLOBALS['bdd']->prepare('SELECT * FROM films WHERE id='.$_GET['id']);
+    $response->execute();
+    return $response->fetch(PDO::FETCH_ASSOC);
+}

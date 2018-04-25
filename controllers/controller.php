@@ -1,18 +1,33 @@
 <?php
 
-require('filmManager.php');
+require('models/filmManager.php');
 
 function listPosts()
 {
-    $posts = getPosts();
+    $posts = listFilms();
 
-    require('listPostsView.php');
+    require 'vendor/autoload.php';
+
+    $loader = new Twig_Loader_Filesystem('views');
+    $twig = new Twig_Environment($loader, array(
+        'cache'=> false
+    ));
+
+    $template = $twig->load('postView.html');
+    echo $template->render (array('films'=>$posts));
 }
 
 function post()
 {
-    $post = getPost($_GET['id']);
-    $comments = getComments($_GET['id']);
+    $film = film();
 
-    require('postView.php');
+    require 'vendor/autoload.php';
+
+    $loader = new Twig_Loader_Filesystem('views');
+    $twig = new Twig_Environment($loader, array(
+        'cache'=> false
+    ));
+
+    $template = $twig->load('postView.html');
+    echo $template->render (array('postFilm'=>$film));
 }
