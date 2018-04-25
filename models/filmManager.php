@@ -1,7 +1,9 @@
 <?php
 
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=films_caty;charset=utf8', 'root', '');
+
+    $bdd = new PDO('mysql:host=localhost;dbname=films_caty;charset=utf8', 'adnane', '');
+
 }
 catch(Exception $e) {
     die('Erreur:'.$e->getMessage());
@@ -14,10 +16,6 @@ function listFilms() {
 }
 
 function film(){
-    
-    
-    
-    
     
     $response = $GLOBALS['bdd']->prepare('SELECT films.titre, films.url_affiche, films.annee_de_sortie, films.description, 
         GROUP_CONCAT(DISTINCT acteurs.nom_acteur SEPARATOR", ") AS acteurs, 
